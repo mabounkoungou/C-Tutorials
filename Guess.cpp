@@ -1,49 +1,40 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
 
 int main()
 {
-    const int LowerNumber = 1;
-    const int HighestNumber = 100;
-    const int Try = 10;
-    int attempts = 0;
+    int number;
     int guess;
+    int tries = 0;
+    int possibleNumbers[100]; 
 
-    int numbers[HighestNumber];
-    for (int i = 0; i < HighestNumber; ++i)
+    // Initialize the array with numbers from 1 to 100
+    for (int i = 0; i < 100; i++)
     {
-        numbers[i] = i + 1;
+        possibleNumbers[i] = i + 1;
     }
 
-    srand(time(0));
-    int HiddenNumber = numbers[rand() % HighestNumber];
+    cout << "Guess a Number Between 1 and 100" << endl;
+    cin >> guess;
+    number = rand() % 100 + 1;
 
-    cout << "Welcome to Guess the Hidden Number!" << endl;
-    cout << "Try to guess the number between " << LowerNumber << " and " << HighestNumber << "." << endl;
-
-    while (attempts < Try)
+    while (guess != number)
     {
-        cout << "Enter your guess: ";
+        if (guess < number)
+        {
+            cout << "Too Low" << endl;
+        }
+        else if (guess > number)
+        {
+            cout << "Too High" << endl;
+        }
+        cout << "Guess Again" << endl;
         cin >> guess;
-        attempts++;
-
-        if (guess < HiddenNumber)
-        {
-            cout << "Too low!" << endl;
-        }
-        else if (guess > HiddenNumber)
-        {
-            cout << "Too high!" << endl;
-        }
-        else
-        {
-            cout << "Congratulations! You guessed the correct number " << HiddenNumber << " in " << attempts << " attempts." << endl;
-            return 0;
-        }
+        tries++;
     }
 
-    cout << "Sorry, you've used all " << Try << " attempts. The hidden number was " << HiddenNumber << "." << endl;
+    cout << "You Got It!" << endl;
+    cout << "It Took You " << tries << " Tries" << endl;
+
     return 0;
 }
