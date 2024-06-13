@@ -8,7 +8,6 @@ int main()
     int tries = 0;
     int possibleNumbers[100]; 
 
-    // Initialize the array with numbers from 1 to 100
     for (int i = 0; i < 100; i++)
     {
         possibleNumbers[i] = i + 1;
